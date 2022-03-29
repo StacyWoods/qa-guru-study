@@ -11,6 +11,6 @@ public class SearchTests {
         open("https://www.google.com/");
         $("[name=q]").setValue("selenide").pressEnter();
         $("[id=search]").shouldHave(text("https://selenide.org"));
-        System.out.println("Google was found!");
+        System.out.println("Google was successfully found!");
     }
 }
