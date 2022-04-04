@@ -50,7 +50,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 
         $x("//input[@id='hobbies-checkbox-2']/..").click(); // Reading
 
-        $x("//input[@id='uploadPicture']").uploadFile(new File("/Users/anastasiia/Pictures/" + FILE_NAME));
+        $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
 
         $("[id=currentAddress]").setValue(ADDRESS);
 
