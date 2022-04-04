@@ -16,12 +16,13 @@ public class AutomationPracticeFormTest extends BaseTests {
         open("/automation-practice-form");
 
         fillStudentsRegistrationForm();
+
         String[] expectedResultsData = {ADDRESS, BIRTH, GENDER, HOBBIES, PHONE, FILE_NAME, STATE_AND_CITY, EMAIL, FULL_NAME, SUBJECTS};
         List<String> expectedResults = Arrays.asList(expectedResultsData);
-
         var submittedData = $(new By.ByTagName("html")).innerHtml();
+        var mappedResults = getResponseData(submittedData).values().stream().toList();
 
-        checkResponseData(getResponseData(submittedData), expectedResults);
+        assertEquals(mappedResults, expectedResults);
     }
 
     private void fillStudentsRegistrationForm() {
@@ -46,7 +47,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 
         $x("//input[@id='hobbies-checkbox-2']/..").click(); // Reading
 
-        $x("//input[@id='uploadPicture']").uploadFile(new File("/Users/anastasiia/Pictures/" + FILE_NAME));
+        $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
 
         $("[id=currentAddress]").setValue(ADDRESS);
 
@@ -74,21 +75,6 @@ public class AutomationPracticeFormTest extends BaseTests {
                     element.getElementsByTag("td").get(1).text()
             );
         });
-        return new TreeMap<String, String>(result);
-    }
-
-    private void checkResponseData(TreeMap<String, String> mappedResult, List<String> expectedResult) {
-        var mappedValueList = mappedResult.values().stream().toList();
-        var mappedKeyList = mappedResult.keySet().stream().toList();
-        for (var i = 0; i< mappedValueList.size() - 1; i++) {
-            assertEquals(mappedValueList.get(i), expectedResult.get(i),
-                    String.format(
-                            "taken '%s' !== '%s' which expected for parameter '%s'",
-                        expectedResult.get(i),
-                        mappedValueList.get(i),
-                        mappedKeyList.get(i)
-                    )
-            );
-        }
+        return new TreeMap<> (result);
     }
 }
