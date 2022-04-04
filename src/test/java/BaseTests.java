@@ -33,4 +33,11 @@ public class BaseTests {
     static void closeBrowser() {
         closeWindow();
     }
+
+    public String getFilePath() {
+        return System.getProperty("user.dir");
+    }
+    public String getImagesPath() {
+        return getFilePath() + "/src/test/resources/images";
+    }
 }
