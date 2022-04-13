@@ -1,6 +1,9 @@
+import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import java.io.File;
+import java.util.*;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -15,20 +18,13 @@ public class AutomationPracticeFormTest extends BaseTests {
         open("/automation-practice-form");
 
         fillStudentsRegistrationForm();
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        var expectedResults = "Label Values\n" +
-                "Student Name " + FULL_NAME + "\n" +
-                "Student Email " + EMAIL + "\n" +
-                "Gender " + GENDER + "\n" +
-                "Mobile " + PHONE + "\n" +
-                "Date of Birth " + BIRTH + "\n" +
-                "Subjects " + SUBJECTS + "\n" +
-                "Hobbies " + HOBBIES + "\n" +
-                "Picture " + FILE_NAME + "\n" +
-                "Address " + ADDRESS + "\n" +
-                "State and City " + STATE_AND_CITY + "";
-        var submittedForm = $("table[class='table table-dark table-striped table-bordered table-hover']").getText();
-        assertEquals(expectedResults, submittedForm);
+
+        String[] expectedResultsData = {ADDRESS, BIRTH, GENDER, HOBBIES, PHONE, FILE_NAME, STATE_AND_CITY, EMAIL, FULL_NAME, SUBJECTS};
+        List<String> expectedResults = Arrays.asList(expectedResultsData);
+        var submittedData = $(new By.ByTagName("html")).innerHtml();
+        var mappedResults = getResponseData(submittedData).values().stream().toList();
+
+        assertEquals(mappedResults, expectedResults);
     }
 
     private void fillStudentsRegistrationForm() {
@@ -55,6 +51,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 //        $("#hobbiesWrapper").$(byText("Reading")).click(); // Reading
         $x("//input[@id='hobbies-checkbox-2']/..").click(); // Reading
 
+
 //        $x("//input[@id='uploadPicture']").uploadFromClasspath(getImagesPath() + "/" + FILE_NAME);
         $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
 
@@ -72,5 +69,18 @@ public class AutomationPracticeFormTest extends BaseTests {
         }
 
         $("[id=submit]").click();
+    }
+
+    private TreeMap<String, String> getResponseData (String submittedData) {
+        var elements = Jsoup.parseBodyFragment(submittedData).getElementsByTag("tbody").get(0)
+                .getElementsByTag("tr");
+        var result = new HashMap<String, String>();
+        elements.forEach(element -> {
+            result.put(
+                    element.getElementsByTag("td").get(0).text(),
+                    element.getElementsByTag("td").get(1).text()
+            );
+        });
+        return new TreeMap<> (result);
     }
 }
