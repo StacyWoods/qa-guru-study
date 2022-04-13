@@ -3,8 +3,8 @@ package tests;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TextBoxTest extends BaseTests {
@@ -12,6 +12,11 @@ public class TextBoxTest extends BaseTests {
     @Test
     void fillTextForm() {
         open("/text-box");
+        executeJavaScript("$('footer').css('display', 'none')");
+        executeJavaScript("$('#adplus-anchor').css('display', 'none')");
+        executeJavaScript("$('#close-fixedban').css('display', 'none')");
+        executeJavaScript("$('#adplus-anchor').remove()");
+
         $("[id=userName]").setValue("Stacy Woods");
         $("[id=userEmail]").setValue("stacy.skytten@gmail.com");
         $("[id=currentAddress]").setValue("Montenegro, Sutomore, plaz");
