@@ -1,4 +1,4 @@
-package guru.qa.docs;
+package docs;
 
 import static java.lang.String.format;
 
@@ -8,6 +8,6 @@ public class StringFormatExamples {
                 subject = "you";
 
         System.out.println("Hello, " + name + "! How are " + subject + "?");
-        System.out.println(format("Hello, %s! How are %s?", name, subject));
+        System.out.printf("Hello, %s! How are %s?%n", name, subject);
     }
 }
