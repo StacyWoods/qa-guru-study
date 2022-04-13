@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +15,7 @@ public class AutomationPracticeFormTest extends BaseTests {
         open("/automation-practice-form");
 
         fillStudentsRegistrationForm();
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         var expectedResults = "Label Values\n" +
                 "Student Name " + FULL_NAME + "\n" +
                 "Student Email " + EMAIL + "\n" +
@@ -40,6 +43,7 @@ public class AutomationPracticeFormTest extends BaseTests {
         executeJavaScript("$('#close-fixedban').css('display', 'none')");
 
         $("[id=dateOfBirthInput]").click();
+//        $(".react-datepicker__year-select").selectOption(YEAR);
         $x(String.format("//select[@class='react-datepicker__year-select']/option[@value=%s]", YEAR)).click();
         $x(String.format("//select[@class='react-datepicker__month-select']/option[@value=%s]", MONTH_NUMBER)).click();
         $x(String.format("//div[@class='react-datepicker__day react-datepicker__day--%s']", DAY_NUMBER)).click();
@@ -48,8 +52,10 @@ public class AutomationPracticeFormTest extends BaseTests {
         $("[id=react-select-2-option-0]").click(); // Hindi
 //        $("[id=subjectsInput]").setValue("Hindi").pressEnter();
 
+//        $("#hobbiesWrapper").$(byText("Reading")).click(); // Reading
         $x("//input[@id='hobbies-checkbox-2']/..").click(); // Reading
 
+//        $x("//input[@id='uploadPicture']").uploadFromClasspath(getImagesPath() + "/" + FILE_NAME);
         $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
 
         $("[id=currentAddress]").setValue(ADDRESS);
