@@ -10,8 +10,8 @@ public class FakerExamples {
 
         System.out.println(faker.aquaTeenHungerForce().character());
         System.out.println(faker.backToTheFuture().date());
-        System.out.println(faker.lebowski().character());
-        System.out.println(faker.lebowski().quote());
+        System.out.println(faker.starTrek().character());
+        System.out.println(faker.hobbit().quote());
         System.out.println(faker.lebowski().actor());
         System.out.println(faker.business().creditCardNumber());
         System.out.println(faker.internet().ipV4Address());
@@ -25,5 +25,7 @@ public class FakerExamples {
 
         Faker fakerRu = new Faker(new Locale("ru"));
         System.out.println(fakerRu.address().fullAddress());
+
+        System.out.println("to be continued..");
     }
 }
