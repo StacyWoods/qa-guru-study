@@ -19,10 +19,10 @@ public class TextBoxTest extends BaseTests {
         $("[id=submit]").click();
 
         //Asserts
-        $("[id=output]").shouldHave(text(FULL_NAME), text(EMAIL), text("Montenegro, Sutomore, plaz"))
+        $("[id=output]").shouldHave(text(userData.get("full_name")), text(userData.get("email")), text("Montenegro, Sutomore, plaz"))
                 .shouldHave(text("Planet Earth"));
-        $("[id=output] [id=name]").shouldHave(text(FULL_NAME));
-        $("[id=output]").$("[id=name]").shouldHave(text(FULL_NAME));
+        $("[id=output] [id=name]").shouldHave(text(userData.get("full_name")));
+        $("[id=output]").$("[id=name]").shouldHave(text(userData.get("full_name")));
 
         $("p[id=permanentAddress]").shouldHave(text("Permananet Address :Planet Earth"));
         $("[id=permanentAddress]", 1).shouldHave(text("Permananet Address :Planet Earth"));

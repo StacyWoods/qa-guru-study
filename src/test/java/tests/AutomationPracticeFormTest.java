@@ -13,13 +13,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AutomationPracticeFormTest extends BaseTests {
 
+    private String[] expectedResultsData = {
+            userData.get("address"),
+            userData.get("birth"),
+            userData.get("gender"),
+            userData.get("hobbies"),
+            userData.get("phone"),
+            userData.get("file_name"),
+            userData.get("state_and_city"),
+            userData.get("email"),
+            userData.get("full_name"),
+            userData.get("subjects")
+    };
+
     @Test
     void checkStudentsRegistrationForm() {
         open("/automation-practice-form");
 
         fillStudentsRegistrationForm();
 
-        String[] expectedResultsData = {ADDRESS, BIRTH, GENDER, HOBBIES, PHONE, FILE_NAME, STATE_AND_CITY, EMAIL, FULL_NAME, SUBJECTS};
+
         List<String> expectedResults = Arrays.asList(expectedResultsData);
         var submittedData = $(new By.ByTagName("html")).innerHtml();
         var mappedResults = getResponseData(submittedData).values().stream().toList();
@@ -28,11 +41,11 @@ public class AutomationPracticeFormTest extends BaseTests {
     }
 
     private void fillStudentsRegistrationForm() {
-        $("[id=firstName]").setValue(NAME);
-        $("[id=lastName]").setValue(SURNAME);
-        $("[id=userEmail]").setValue(EMAIL);
+        $("[id=firstName]").setValue(userData.get("name"));
+        $("[id=lastName]").setValue(userData.get("surname"));
+        $("[id=userEmail]").setValue(userData.get("email"));
         $("#gender-radio-2").parent().click();
-        $("[id=userNumber]").setValue(PHONE);
+        $("[id=userNumber]").setValue(userData.get("phone"));
 
         executeJavaScript("$('footer').css('display', 'none')");
         executeJavaScript("$('#adplus-anchor').css('display', 'none')");
@@ -40,9 +53,9 @@ public class AutomationPracticeFormTest extends BaseTests {
 
         $("[id=dateOfBirthInput]").click();
 //        $(".react-datepicker__year-select").selectOption(YEAR);
-        $x(String.format("//select[@class='react-datepicker__year-select']/option[@value=%s]", YEAR)).click();
-        $x(String.format("//select[@class='react-datepicker__month-select']/option[@value=%s]", MONTH_NUMBER)).click();
-        $x(String.format("//div[@class='react-datepicker__day react-datepicker__day--0%s']", DAY)).click();
+        $x(String.format("//select[@class='react-datepicker__year-select']/option[@value=%s]", userData.get("year"))).click();
+        $x(String.format("//select[@class='react-datepicker__month-select']/option[@value=%s]", userData.get("month_number"))).click();
+        $x(String.format("//div[@class='react-datepicker__day react-datepicker__day--0%s']", userData.get("day"))).click();
 
         $("[id=subjectsInput]").setValue("d").click();
         $("[id=react-select-2-option-0]").click(); // Hindi
@@ -53,9 +66,9 @@ public class AutomationPracticeFormTest extends BaseTests {
 
 
 //        $x("//input[@id='uploadPicture']").uploadFromClasspath("images/" + FILE_NAME);
-        $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
+        $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + userData.get("file_name")));
 
-        $("[id=currentAddress]").setValue(ADDRESS);
+        $("[id=currentAddress]").setValue(userData.get("address"));
 
         $("[id=submit]").scrollTo();
 
