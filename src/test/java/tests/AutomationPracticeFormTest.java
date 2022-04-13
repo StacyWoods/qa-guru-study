@@ -1,3 +1,5 @@
+package tests;
+
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -5,8 +7,6 @@ import org.openqa.selenium.By;
 import java.io.File;
 import java.util.*;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +42,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 //        $(".react-datepicker__year-select").selectOption(YEAR);
         $x(String.format("//select[@class='react-datepicker__year-select']/option[@value=%s]", YEAR)).click();
         $x(String.format("//select[@class='react-datepicker__month-select']/option[@value=%s]", MONTH_NUMBER)).click();
-        $x(String.format("//div[@class='react-datepicker__day react-datepicker__day--%s']", DAY_NUMBER)).click();
+        $x(String.format("//div[@class='react-datepicker__day react-datepicker__day--0%s']", DAY)).click();
 
         $("[id=subjectsInput]").setValue("d").click();
         $("[id=react-select-2-option-0]").click(); // Hindi
@@ -52,7 +52,7 @@ public class AutomationPracticeFormTest extends BaseTests {
         $x("//input[@id='hobbies-checkbox-2']/..").click(); // Reading
 
 
-//        $x("//input[@id='uploadPicture']").uploadFromClasspath(getImagesPath() + "/" + FILE_NAME);
+//        $x("//input[@id='uploadPicture']").uploadFromClasspath("images/" + FILE_NAME);
         $x("//input[@id='uploadPicture']").uploadFile(new File(getImagesPath() + "/" + FILE_NAME));
 
         $("[id=currentAddress]").setValue(ADDRESS);

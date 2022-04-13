@@ -1,4 +1,4 @@
-package guru.qa.docs;
+package docs;
 
 import com.github.javafaker.Faker;
 
@@ -25,6 +25,5 @@ public class FakerExamples {
 
         Faker fakerRu = new Faker(new Locale("ru"));
         System.out.println(fakerRu.address().fullAddress());
-
     }
 }

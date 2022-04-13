@@ -1,6 +1,6 @@
-package guru.qa.docs;
+package docs;
 
-import static guru.qa.utils.RandomUtils.*;
+import static utils.RandomUtils.*;
 
 public class RandomUtilsExamples {
     public static void main(String[] args) {
