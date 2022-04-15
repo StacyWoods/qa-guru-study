@@ -1,19 +1,21 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
-import static java.lang.String.format;
 
 public class BaseTests {
 
-    protected HashMap<String, String> userData = new HashMap<>();
+    protected static Faker faker = new Faker();
+    protected static HashMap<String, String> userData = new HashMap<>();
 
     public BaseTests() {
         setUserData();
@@ -40,13 +42,19 @@ public class BaseTests {
         return getFilePath() + "/src/test/resources/images";
     }
 
+    protected Boolean matchResults(Map<String, String> actualResult, Map<String, String> expectedResult) {
+        return actualResult.entrySet().stream().allMatch(actual ->
+                expectedResult.containsKey(actual.getKey())
+                && expectedResult.get(actual.getKey()).equals(actual.getValue()));
+    }
+
     protected TreeMap<String, String> getResponseDataFromTable(String submittedData) {
         var elements = Jsoup.parseBodyFragment(submittedData).getElementsByTag("tbody").get(0)
                 .getElementsByTag("tr");
         var result = new HashMap<String, String>();
         elements.forEach(element -> {
             result.put(
-                    element.getElementsByTag("td").get(0).text(),
+                    element.getElementsByTag("td").get(0).text().toLowerCase(),
                     element.getElementsByTag("td").get(1).text()
             );
         });

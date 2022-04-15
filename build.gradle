@@ -7,15 +7,16 @@ repositories {
 }
 
 dependencies {
+    implementation (
+            'org.jetbrains:annotations:23.0.0',
+            "org.jsoup:jsoup:1.14.3",
+    )
     testImplementation (
-            'com.codeborne:selenide:6.4.0',
+            "com.codeborne:selenide:6.4.0",
             "org.junit.jupiter:junit-jupiter:5.8.2",
             "org.slf4j:slf4j-simple:1.7.36",
             "com.github.javafaker:javafaker:1.0.2",
     )
-
-    // https://mvnrepository.com/artifact/org.jsoup/jsoup
-    implementation group: 'org.jsoup', name: 'jsoup', version: '1.14.3'
 }
 
 tasks.withType(JavaCompile) {

@@ -5,10 +5,9 @@ import org.openqa.selenium.By;
 import pages.RegistrationFormPage;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AutomationPracticeFormByPageObjectTest extends BaseTests {
@@ -38,7 +37,7 @@ public class AutomationPracticeFormByPageObjectTest extends BaseTests {
         var submittedData = $(new By.ByTagName("html")).innerHtml();
         var mappedResults = getResponseDataFromTable(submittedData).values().stream().toList();
 
-        assertEquals(mappedResults, expectedResults);
+        assertEquals(expectedResults, mappedResults);
     }
 
     private void fillStudentsRegistrationForm() {
