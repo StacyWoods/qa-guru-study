@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import java.io.File;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TreeMap;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$x;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AutomationPracticeFormTest extends BaseTests {

@@ -7,7 +7,8 @@ import pages.RegistrationFormPage;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
@@ -24,12 +25,12 @@ public class RegistrationFormWithFakerTest extends BaseTests {
     private final String firstName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = faker.internet().emailAddress(),
-            currentAddress = faker.rickAndMorty().quote(),
+            currentAddress = faker.address().fullAddress(),
             gender = faker.demographic().sex(),
             phone = faker.phoneNumber().subscriberNumber(10),
             day = String.valueOf(localDate.getDayOfMonth()),
-            year = String.valueOf(localDate.getYear()),
-            monthCorrected = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase();
+            monthCorrected = month.substring(0, 1).toUpperCase() + month.substring(1).toLowerCase(),
+            year = String.valueOf(localDate.getYear());
 
     private String[] expectedResultsData = {
             currentAddress,
@@ -54,7 +55,7 @@ public class RegistrationFormWithFakerTest extends BaseTests {
         var submittedData = $(new By.ByTagName("html")).innerHtml();
         var mappedResults = getResponseDataFromTable(submittedData).values().stream().toList();
 
-        assertEquals(mappedResults, expectedResults);
+        assertEquals(expectedResults, mappedResults);
     }
 
     protected void fillStudentsRegistrationForm() {
