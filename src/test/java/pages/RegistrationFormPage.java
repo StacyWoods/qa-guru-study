@@ -23,7 +23,6 @@ public class RegistrationFormPage extends AbstractPage {
     SelenideElement citySelect = $("#city");
 
     // actions
-
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
