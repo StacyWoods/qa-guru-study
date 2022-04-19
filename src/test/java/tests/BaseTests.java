@@ -14,6 +14,9 @@ import static com.codeborne.selenide.Selenide.closeWindow;
 
 public class BaseTests {
 
+    public static final String OWNER = "StacyWoods";
+    protected static final String REPOSITORY = OWNER + "/qa-guru-study";
+    protected static final int PR_NUMBER = 13;
     protected static Faker faker = new Faker();
     protected static HashMap<String, String> userData = new HashMap<>();
 
