@@ -37,12 +37,11 @@ public class BaseTests {
         closeWindow();
     }
 
-    public String getFilePath() {
-        return System.getProperty("user.dir");
-    }
+    public static String getUserDir() { return System.getProperty("user.dir");}
+    public static String getResourcesDir() { return getUserDir() + "/src/test/resources/";}
 
     public String getImagesPath() {
-        return getFilePath() + "/src/test/resources/images";
+        return getUserDir() + "/src/test/resources/images";
     }
 
     protected Boolean matchResults(Map<String, String> actualResult, Map<String, String> expectedResult) {
