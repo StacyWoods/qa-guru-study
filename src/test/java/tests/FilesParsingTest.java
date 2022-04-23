@@ -7,11 +7,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.xlstest.XLS;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
 import entities.Person;
 import org.junit.jupiter.api.Assertions;
@@ -28,9 +25,9 @@ import java.util.zip.ZipInputStream;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SelenideDownloadTest {
+public class FilesParsingTest {
 
-    ClassLoader cl = SelenideDownloadTest.class.getClassLoader();
+    ClassLoader cl = FilesParsingTest.class.getClassLoader();
 
     static {
         Configuration.browser = "Safari";
