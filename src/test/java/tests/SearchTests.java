@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchTests extends BaseTests {
@@ -92,5 +93,20 @@ public class SearchTests extends BaseTests {
                 2,
                 WebDriverRunner.getWebDriver().getWindowHandles().size()
         );
+    }
+
+    @Test
+    void githubSelenideSearchTest() {
+        open("https://github.com/selenide/selenide");
+        $("#wiki-tab").click();
+        $(".markdown-body").find(byText("Soft assertions")).click();
+        $("#wiki-wrapper").shouldHave(text("JUnit5 extension"), text("Using JUnit5 extend test class"));
+    }
+    @Test
+
+    void dragAndDropTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#column-a").dragAndDropTo("#column-b");
+        $("#column-a").shouldHave(text("B"));
     }
 }
