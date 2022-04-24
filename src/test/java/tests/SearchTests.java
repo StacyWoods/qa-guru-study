@@ -109,4 +109,12 @@ public class SearchTests extends BaseTests {
         $("#column-a").dragAndDropTo("#column-b");
         $("#column-a").shouldHave(text("B"));
     }
+
+    @Test
+    void shouldFindSelenideAsFirstRepository(){
+        open("https://github.com");
+        $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
+        $$("ul.repo-list li").first().$("a").click();
+        $("h2").shouldHave(text("selenide / selenide"));
+    }
 }
