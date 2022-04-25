@@ -127,6 +127,7 @@ public class SearchTests extends BaseTests {
         open("https://github.com");
         $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
         $$("ul.repo-list li").first().$("a").click();
+//        $("ul.repo-list li").$("a").click();
         $("h2").shouldHave(text("selenide / selenide"));
     }
 }
