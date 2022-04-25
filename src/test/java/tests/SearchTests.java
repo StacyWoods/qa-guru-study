@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import enums.MenuItem;
 import org.junit.jupiter.api.Assertions;
@@ -106,8 +107,19 @@ public class SearchTests extends BaseTests {
 
     void dragAndDropTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
-        $("#column-a").dragAndDropTo("#column-b");
-        $("#column-a").shouldHave(text("B"));
+
+        SelenideElement elem1 = $("#column-a");
+        SelenideElement elem2 = $("#column-b");
+
+        // исходное состояние
+        elem1.$("header").shouldBe(text("A"));
+        elem2.$("header").shouldBe(text("B"));
+
+        elem1.dragAndDropTo(elem2);
+
+        // перемещенный результат
+        elem1.$("header").shouldBe(text("B"));
+        elem2.$("header").shouldBe(text("A"));
     }
 
     @Test
