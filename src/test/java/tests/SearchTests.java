@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import enums.MenuItem;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +15,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchTests extends BaseTests {
@@ -92,5 +94,40 @@ public class SearchTests extends BaseTests {
                 2,
                 WebDriverRunner.getWebDriver().getWindowHandles().size()
         );
+    }
+
+    @Test
+    void githubSelenideSearchTest() {
+        open("https://github.com/selenide/selenide");
+        $("#wiki-tab").click();
+        $(".markdown-body").find(byText("Soft assertions")).click();
+        $("#wiki-wrapper").shouldHave(text("JUnit5 extension"), text("Using JUnit5 extend test class"));
+    }
+    @Test
+
+    void dragAndDropTest() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+
+        SelenideElement elem1 = $("#column-a");
+        SelenideElement elem2 = $("#column-b");
+
+        // исходное состояние
+        elem1.$("header").shouldBe(text("A"));
+        elem2.$("header").shouldBe(text("B"));
+
+        elem1.dragAndDropTo(elem2);
+
+        // перемещенный результат
+        elem1.$("header").shouldBe(text("B"));
+        elem2.$("header").shouldBe(text("A"));
+    }
+
+    @Test
+    void shouldFindSelenideAsFirstRepository(){
+        open("https://github.com");
+        $("[data-test-selector=nav-search-input]").setValue("selenide").pressEnter();
+        $$("ul.repo-list li").first().$("a").click();
+//        $("ul.repo-list li").$("a").click();
+        $("h2").shouldHave(text("selenide / selenide"));
     }
 }
