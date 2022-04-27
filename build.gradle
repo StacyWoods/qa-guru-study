@@ -52,6 +52,24 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task demoqa_tests(type: Test) {
+    useJUnitPlatform{
+        includeTags "demoqa-jenkins"
+//        excludeTags "wip"
+    }
+}
+
 test {
     useJUnitPlatform()
 }

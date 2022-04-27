@@ -6,6 +6,7 @@ import pages.RegistrationFormPage;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +36,7 @@ public class AutomationPracticeFormByPageObjectTest extends BaseTests {
 
         List<String> expectedResults = Arrays.asList(expectedResultsData);
         var submittedData = $(new By.ByTagName("html")).innerHtml();
-        var mappedResults = getResponseDataFromTable(submittedData).values().stream().toList();
+        var mappedResults = getResponseDataFromTable(submittedData).values().stream().collect(Collectors.toList());
 
         assertEquals(expectedResults, mappedResults);
     }

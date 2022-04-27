@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
@@ -53,7 +54,7 @@ public class RegistrationFormWithFakerTest extends BaseTests {
 
         List<String> expectedResults = Arrays.asList(expectedResultsData);
         var submittedData = $(new By.ByTagName("html")).innerHtml();
-        var mappedResults = getResponseDataFromTable(submittedData).values().stream().toList();
+        var mappedResults = getResponseDataFromTable(submittedData).values().stream().collect(Collectors.toList());
 
         assertEquals(expectedResults, mappedResults);
     }

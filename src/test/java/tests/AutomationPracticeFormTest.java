@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,7 +38,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 
         List<String> expectedResults = Arrays.asList(expectedResultsData);
         var submittedData = $(new By.ByTagName("html")).innerHtml();
-        var mappedResults = getResponseData(submittedData).values().stream().toList();
+        var mappedResults = getResponseData(submittedData).values().stream().collect(Collectors.toList());
 
         assertEquals(mappedResults, expectedResults);
     }

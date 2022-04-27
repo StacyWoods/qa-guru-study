@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SimpleJUnitTest {
 
@@ -20,10 +21,10 @@ public class SimpleJUnitTest {
                 });
         List<Method> declaredBeforeEachMethods = Arrays.stream(AnnotationsExampleTest.class.getDeclaredMethods())
                 .filter(method -> method.getAnnotation(BeforeEach.class) != null)
-                .toList();
+                .collect(Collectors.toList());
         List<Method> declaredAfterEachMethods = Arrays.stream(AnnotationsExampleTest.class.getDeclaredMethods())
                 .filter(method -> method.getAnnotation(AfterEach.class) != null)
-                .toList();
+                .collect(Collectors.toList());
 
         Arrays.stream(AnnotationsExampleTest.class.getDeclaredMethods())
                 .filter(method -> (method.getAnnotation(Test.class) != null && method.getAnnotation(Disabled.class) == null))
