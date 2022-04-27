@@ -17,6 +17,10 @@ public abstract class AbstractPage {
         executeJavaScript("$('"+value+"').remove()");
     }
 
+    public void removeById(String id) {
+        executeJavaScript("document.getElementById('"+id+"').remove()");
+    }
+
     public void submitById(String value) {
         $(By.id(value)).click();
     }

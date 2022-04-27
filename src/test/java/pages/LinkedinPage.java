@@ -14,7 +14,7 @@ public class LinkedinPage extends AbstractPage {
     public LinkedinPage openPage() {
         open("https://www.linkedin.com/");
         if(acceptButton.isDisplayed()) {
-            removeBy("#artdeco-global-alert-container");
+            removeById("artdeco-global-alert-container");
         }
         if(acceptButton.isDisplayed()) {
             acceptButton.click();

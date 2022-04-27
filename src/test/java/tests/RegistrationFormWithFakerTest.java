@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.RegistrationFormPage;
+import pages.components.CalendarComponent;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -37,7 +38,7 @@ public class RegistrationFormWithFakerTest extends BaseTests {
 
     private String[] expectedResultsData = {
             currentAddress,
-            format("%s %s,%s", day, monthCorrected, year),
+            format("%s %s,%s", CalendarComponent.correctedDay(day), monthCorrected, year),
             gender,
             userData.get("hobbies"),
             phone,
