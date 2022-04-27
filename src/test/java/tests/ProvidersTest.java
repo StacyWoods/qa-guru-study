@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 
-@Tag("demoqa-jenkins")
+@Tag("wip")
 public class ProvidersTest extends BaseTests {
 
     protected LinkedinPage linkedinPage = new LinkedinPage();
