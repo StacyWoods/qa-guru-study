@@ -1,8 +1,10 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import helpers.Attach;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -30,9 +32,11 @@ public class BaseTests {
 
     @BeforeAll
     static void setUp() {
-        Configuration.holdBrowserOpen = true;
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+//        Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1420x780";
+        Configuration.browserSize = "1920x1080";
+//        Configuration.browserSize = "1420x780";
 //        Configuration.timeout = 300000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
