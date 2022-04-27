@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Tag("demoqa-jenkins")
 public class SimpleJUnitTest {
 
     public static void main(String[] args) {

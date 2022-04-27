@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.RegistrationFormPage;
@@ -15,6 +16,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("demoqa-jenkins")
 public class RegistrationFormWithFakerTest extends BaseTests {
 
     protected RegistrationFormPage registrationFormPage = new RegistrationFormPage();

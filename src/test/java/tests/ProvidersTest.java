@@ -1,6 +1,7 @@
 package tests;
 
 import enums.LinkedInMenuItem;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 
+@Tag("demoqa-jenkins")
 public class ProvidersTest extends BaseTests {
 
     protected LinkedinPage linkedinPage = new LinkedinPage();

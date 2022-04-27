@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.RegistrationFormPage;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("demoqa-jenkins")
 public class AutomationPracticeFormByPageObjectTest extends BaseTests {
 
     private String[] expectedResultsData = {

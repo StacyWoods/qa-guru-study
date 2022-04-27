@@ -5,6 +5,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTests;
 
@@ -17,6 +18,7 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.linkText;
 import static org.openqa.selenium.By.partialLinkText;
 
+@Tag("demoqa-jenkins")
 public class LambdaStepTest extends BaseTests {
 
     @Test

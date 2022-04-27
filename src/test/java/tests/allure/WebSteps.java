@@ -3,6 +3,7 @@ package tests.allure;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Tag;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.openqa.selenium.By.linkText;
 import static org.openqa.selenium.By.partialLinkText;
 
+@Tag("demoqa-jenkins")
 public class WebSteps {
     @Step("Открываем главную страницу github")
     public void openMainPage() {

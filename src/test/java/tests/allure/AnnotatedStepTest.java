@@ -3,10 +3,12 @@ package tests.allure;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import tests.BaseTests;
 
+@Tag("demoqa-jenkins")
 public class AnnotatedStepTest extends BaseTests {
 
     @ValueSource(booleans = { true, false })
