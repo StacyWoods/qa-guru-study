@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import helpers.Attach;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
+import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 
 public class BaseTests {
@@ -52,6 +54,7 @@ public class BaseTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+        refresh();
     }
 
     @AfterAll

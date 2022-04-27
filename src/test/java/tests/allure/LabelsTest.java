@@ -8,7 +8,6 @@ import tests.BaseTests;
 
 import java.lang.annotation.*;
 
-@Tag("demoqa-jenkins")
 public class LabelsTest extends BaseTests {
 
     @Test
