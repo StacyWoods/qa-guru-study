@@ -29,7 +29,7 @@ public class BaseTests {
         Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1420x780";
-        Configuration.timeout = 300000;
+//        Configuration.timeout = 300000;
     }
 
     @AfterAll

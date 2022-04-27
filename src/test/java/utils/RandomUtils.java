@@ -1,7 +1,10 @@
 package utils;
 
+import org.junit.jupiter.api.Tag;
+
 import java.util.Random;
 
+@Tag("wip")
 public class RandomUtils {
     public static String getRandomString(int length) {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";

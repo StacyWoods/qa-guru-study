@@ -4,6 +4,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.BaseTests;
 
@@ -17,6 +18,7 @@ import static org.openqa.selenium.By.partialLinkText;
 @Severity(SeverityLevel.BLOCKER)
 @Feature("QAGURU 12-7")
 @Story("Просмотр PR в репозитории")
+@Tag("demoqa-jenkins")
 public class SelenideTest extends BaseTests {
 
     @Test

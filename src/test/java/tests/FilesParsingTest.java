@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import entities.Person;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -25,15 +26,18 @@ import java.util.zip.ZipInputStream;
 import static com.codeborne.selenide.Selenide.$;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("demoqa-jenkins")
 public class FilesParsingTest {
 
     ClassLoader cl = FilesParsingTest.class.getClassLoader();
 
     static {
         Configuration.browser = "Safari";
+//        Configuration.browser = "Firefox";
     }
 
     @Test
+    @Tag("wip")
     void downloadTest() throws Exception {
         Selenide.open("https://github.com/junit-team/junit5/blob/main/README.md");
         File textFile = $("#raw-url").download();

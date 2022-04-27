@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -17,6 +18,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Tag("demoqa-jenkins")
 public class AutomationPracticeFormParametrizedTest extends BaseTests {
 
     protected RegistrationFormPage registrationFormPage = new RegistrationFormPage();
