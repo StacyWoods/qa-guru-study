@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.*;
 
 @DisplayName("Класс с демонстрационными тестами")
+@Tag("examples")
 public class AnnotationsExampleTest {
 
     @DisplayName("Before All")

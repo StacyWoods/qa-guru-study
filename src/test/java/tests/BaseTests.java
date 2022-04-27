@@ -2,15 +2,19 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
+import helpers.Attach;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
+import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 
 public class BaseTests {
 
@@ -30,11 +34,27 @@ public class BaseTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1420x780";
 //        Configuration.timeout = 300000;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        Configuration.browserCapabilities = capabilities;
+    }
+
+    @AfterEach
+    void addAttachments() {
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
     }
 
     @AfterAll
     static void closeBrowser() {
-        closeWindow();
+        if (hasWebDriverStarted()) {
+            closeWindow();
+        }
     }
 
     public static String getUserDir() { return System.getProperty("user.dir");}
