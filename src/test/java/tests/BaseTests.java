@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import static com.codeborne.selenide.Selenide.closeWindow;
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 
 public class BaseTests {
@@ -34,16 +34,17 @@ public class BaseTests {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-//        Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
-//        Configuration.browserSize = "1420x780";
-//        Configuration.timeout = 300000;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.browserSize = "1420x780";
+//        Configuration.holdBrowserOpen = true;
+//        Configuration.timeout = 300000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
+        open();
     }
 
     @AfterEach
@@ -52,7 +53,6 @@ public class BaseTests {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-        refresh();
     }
 
     @AfterAll
