@@ -20,6 +20,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -86,7 +87,7 @@ public class FilesParsingTest {
 
     @Test
     void zipParsingTest() throws Exception {
-        try (ZipInputStream is = new ZipInputStream(cl.getResourceAsStream("zip/sample-zip-file.zip"))) {
+        try (ZipInputStream is = new ZipInputStream(Objects.requireNonNull(cl.getResourceAsStream("zip/sample-zip-file.zip")))) {
             ZipEntry entry;
             List<String> filenames = new ArrayList<>();
             while((entry = is.getNextEntry()) != null) {
