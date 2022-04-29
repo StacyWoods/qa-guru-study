@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import entities.Person;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -86,6 +87,7 @@ public class FilesParsingTest {
     }
 
     @Test
+    @Disabled
     void zipParsingTest() throws Exception {
         try (ZipInputStream is = new ZipInputStream(Objects.requireNonNull(cl.getResourceAsStream("zip/sample-zip-file.zip")))) {
             ZipEntry entry;
