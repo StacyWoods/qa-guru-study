@@ -32,8 +32,8 @@ public class FilesParsingTest {
     ClassLoader cl = FilesParsingTest.class.getClassLoader();
 
     static {
-        Configuration.browser = "Safari";
-//        Configuration.browser = "Firefox";
+//        Configuration.browser = "Safari";
+        Configuration.browser = "firefox";
     }
 
     @Test
