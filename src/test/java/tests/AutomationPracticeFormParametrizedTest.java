@@ -57,9 +57,9 @@ public class AutomationPracticeFormParametrizedTest extends BaseTests {
                 "0777351544", "stacy.skytten@gmail.com", "Stacy Woods");
 
         return Stream.of(
-//                Arguments.of(
-//                        generateDataByList(defaultList, Arrays.asList("Stacy", "Woods", "03", "December", "1990")),
-//                        generateDataByList(defaultList)),
+                Arguments.of(
+                        generateDataByList(defaultList, Arrays.asList("Stacy", "Woods", "03", "December", "1990")),
+                        generateDataByList(defaultList)),
                 Arguments.of(
                         generateDataByList(defaultFakerList, Arrays.asList(firstName, lastName, CalendarComponent.correctedDay(day), monthCorrected, year)),
                         generateDataByList(defaultFakerList))

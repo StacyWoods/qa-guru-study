@@ -34,7 +34,7 @@ public class BaseTests {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "1920x1080";
 //        Configuration.browserSize = "1420x780";
 //        Configuration.timeout = 300000;
