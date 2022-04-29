@@ -1,7 +1,6 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import helpers.Attach;
@@ -36,7 +35,6 @@ public class BaseTests {
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         Configuration.holdBrowserOpen = true;
-        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
 //        Configuration.browserSize = "1420x780";
 //        Configuration.timeout = 300000;

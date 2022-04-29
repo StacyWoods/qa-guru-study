@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Selenide;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -33,10 +34,9 @@ public class AutomationPracticeFormTest extends BaseTests {
 
     @Test
     void checkStudentsRegistrationForm() {
-        open("/automation-practice-form");
+        Selenide.open("https://demoqa.com/automation-practice-form");
 
         fillStudentsRegistrationForm();
-
 
         List<String> expectedResults = Arrays.asList(expectedResultsData);
         var submittedData = $(new By.ByTagName("html")).innerHtml();

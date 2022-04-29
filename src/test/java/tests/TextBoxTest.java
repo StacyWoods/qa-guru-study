@@ -12,7 +12,7 @@ public class TextBoxTest extends BaseTests {
 
     @Test
     void fillTextForm() {
-        open("/text-box");
+        open("https://demoqa.com/text-box");
         executeJavaScript("$('footer').css('display', 'none')");
         executeJavaScript("$('#adplus-anchor').css('display', 'none')");
         executeJavaScript("$('#close-fixedban').css('display', 'none')");
