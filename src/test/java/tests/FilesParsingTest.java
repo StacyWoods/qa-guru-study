@@ -31,11 +31,6 @@ public class FilesParsingTest {
 
     ClassLoader cl = FilesParsingTest.class.getClassLoader();
 
-    static {
-//        Configuration.browser = "Safari";
-        Configuration.browser = "firefox";
-    }
-
     @Test
     @Tag("wip")
     void downloadTest() throws Exception {
