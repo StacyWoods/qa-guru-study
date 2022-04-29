@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 
-@Tag("wip")
+@Tag("robotCookiesSpam")
 public class ProvidersTest extends BaseTests {
 
     protected LinkedinPage linkedinPage = new LinkedinPage();
@@ -37,7 +37,7 @@ public class ProvidersTest extends BaseTests {
             delimiter = '|'
     )
     @ParameterizedTest(name = "Test By CsvSource: testing {0}, expecting {1}")
-    void  comProductComplexTest(String testData, String expectedResult) {
+    void comProductComplexTest(String testData, String expectedResult) {
         linkedinPage.openPage();
 
         $$("h2").find(text(testData)).scrollTo();
@@ -46,7 +46,7 @@ public class ProvidersTest extends BaseTests {
 
     @EnumSource(LinkedInMenuItem.class)
     @ParameterizedTest()
-    void  navComMenuTest(LinkedInMenuItem testData) {
+    void navComMenuTest(LinkedInMenuItem testData) {
         linkedinPage.openPage();
 
         linkedinPage.menuItemList.find(text(String.valueOf(testData))).shouldBe(visible);

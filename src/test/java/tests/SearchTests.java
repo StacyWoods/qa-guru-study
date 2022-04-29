@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import enums.MenuItem;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
@@ -21,6 +22,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class SearchTests extends BaseTests {
 
     @Test
+    @Tag("robotCookiesSpam")
     void successfulSearchTest() {
         open("https://www.google.com/");
         $(byName("q")).setValue("selenide").pressEnter();
@@ -33,6 +35,7 @@ public class SearchTests extends BaseTests {
             "JUnit"
     })
     @ParameterizedTest(name = "Проверка поиска в яндексе по слову {0}")
+    @Tag("robotCookiesSpam")
     void yaSearchTest(String testData) {
         // Предусловия:
         open("https://ya.ru");
@@ -50,6 +53,7 @@ public class SearchTests extends BaseTests {
             "JUnit, Support JUnit"
     })
     @ParameterizedTest(name = "Проверка поиска в яндексе по слову {0}, ожидаем результат: {1}")
+    @Tag("robotCookiesSpam")
     void yaSearchComplexTest(String testData, String expectedResult) {
         // Предусловия:
         open("https://ya.ru");
@@ -91,7 +95,7 @@ public class SearchTests extends BaseTests {
         System.out.println(MenuItem.IMG.rusName);
 
         Assertions.assertEquals(
-                2,
+                3,
                 WebDriverRunner.getWebDriver().getWindowHandles().size()
         );
     }
