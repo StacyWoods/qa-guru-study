@@ -6,10 +6,12 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.By;
 import pages.RegistrationFormPage;
+import pages.components.CalendarComponent;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Stream;
@@ -46,7 +48,7 @@ public class AutomationPracticeFormParametrizedTest extends BaseTests {
 
         List<String> defaultFakerList = Arrays.asList(
                 faker.address().fullAddress(),
-                format("%s %s,%s", day, monthCorrected, year),
+                format("%s %s,%s", CalendarComponent.correctedDay(day), monthCorrected, year),
                 faker.demographic().sex(),
                 faker.phoneNumber().subscriberNumber(10),
                 faker.internet().emailAddress(),
@@ -55,11 +57,11 @@ public class AutomationPracticeFormParametrizedTest extends BaseTests {
                 "0777351544", "stacy.skytten@gmail.com", "Stacy Woods");
 
         return Stream.of(
+//                Arguments.of(
+//                        generateDataByList(defaultList, Arrays.asList("Stacy", "Woods", "03", "December", "1990")),
+//                        generateDataByList(defaultList)),
                 Arguments.of(
-                        generateDataByList(defaultList, Arrays.asList("Stacy", "Woods", "03", "December", "1990")),
-                        generateDataByList(defaultList)),
-                Arguments.of(
-                        generateDataByList(defaultFakerList, Arrays.asList(firstName, lastName, day, monthCorrected, year)),
+                        generateDataByList(defaultFakerList, Arrays.asList(firstName, lastName, CalendarComponent.correctedDay(day), monthCorrected, year)),
                         generateDataByList(defaultFakerList))
         );
     }
