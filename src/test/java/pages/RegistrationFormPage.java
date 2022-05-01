@@ -22,12 +22,9 @@ public class RegistrationFormPage extends AbstractPage {
     SelenideElement stateSelect = $("#state");
     SelenideElement citySelect = $("#city");
 
-    public String getBaseUrl() {
-        return System.getProperty("baseUrl", "https://demoqa.com");
-    }
-
     // actions
     public RegistrationFormPage openPage() {
+        setBaseUrl("https://demoqa.com");
         open(getBaseUrl() + "/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         removeBy("footer");
