@@ -10,8 +10,12 @@ public class LinkedinPage extends AbstractPage {
     public SelenideElement acceptButton = $x("//div[@id='artdeco-global-alert-container']/*/*/*/*/button[@data-control-name='ga-cookie.consent.accept.v3']");
     public ElementsCollection menuItemList = $$(".top-nav-link__label-text");
 
+    public String getBaseUrl() {
+        return System.getProperty("baseUrl", "https://www.linkedin.com");
+    }
+
     public LinkedinPage openPage() {
-        open("https://www.linkedin.com/");
+        open(getBaseUrl());
         if(acceptButton.isDisplayed()) {
             removeById("artdeco-global-alert-container");
         }
