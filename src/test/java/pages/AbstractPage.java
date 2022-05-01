@@ -27,7 +27,7 @@ public abstract class AbstractPage {
     }
 
     public String getBaseUrl() {
-        return System.getProperty("baseUrl", "localhost");
+        return System.getProperty("baseUrl", System.getProperty("host"));
     }
 
     public void setBaseUrl(String baseUrl) {
