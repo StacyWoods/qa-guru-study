@@ -15,7 +15,8 @@ dependencies {
             'org.jetbrains:annotations:23.0.0',
             "org.jsoup:jsoup:1.14.3",
             "com.fasterxml.jackson.core:jackson-databind:2.13.2.2",
-            "com.google.code.gson:gson:2.9.0"
+            "com.google.code.gson:gson:2.9.0",
+            "org.aeonbits.owner:owner:1.0.12",
     )
     testImplementation (
             "com.codeborne:selenide:6.4.0",
