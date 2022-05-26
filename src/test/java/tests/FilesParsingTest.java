@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.pdftest.matchers.ContainsExactText;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.xlstest.XLS;
 import com.fasterxml.jackson.databind.JsonNode;
