@@ -3,7 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
-import configs.CredentialsConfigs;
+import configs.CredentialsConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -22,7 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 
 public class BaseTests {
-    private static final CredentialsConfigs configs = ConfigFactory.create(CredentialsConfigs.class);
+    private static final CredentialsConfig configs = ConfigFactory.create(CredentialsConfig.class);
 
     public static final String OWNER = "StacyWoods";
     protected static final String REPOSITORY = OWNER + "/qa-guru-study";

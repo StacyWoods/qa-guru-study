@@ -1,13 +1,13 @@
 package tests;
 
-import configs.CredentialsConfigs;
+import configs.CredentialsConfig;
 import org.aeonbits.owner.ConfigFactory;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 public class OwnersTest {
-    CredentialsConfigs configs = ConfigFactory.create(CredentialsConfigs.class);
+    CredentialsConfig configs = ConfigFactory.create(CredentialsConfig.class);
 
     @Test
     @Tag("owner")

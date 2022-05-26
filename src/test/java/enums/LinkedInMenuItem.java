@@ -1,5 +1,5 @@
 package enums;
 
 public enum LinkedInMenuItem {
-    DISCOVER, PEOPLE, LEARNING, JOBS;
+    DISCOVER, PEOPLE, LEARNING, JOBS
 }
