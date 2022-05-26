@@ -30,13 +30,15 @@ public class LabelsTest extends BaseTests {
         Allure.link("Тестинг", "https://github.com");
     }
 
-    @CustomAnnotationSW
+    @CustomAnnotationSW(getValue = "test")
     @Test
     @DisplayName("Test CustomAnnotationSW")
     public void testCustomAnnotation() {
         Allure.link("Тестинг", "https://github.com");
     }
 
+    @Custom(getValue = "new custom annotation class implementation")
+    @CustomAnnotationSW()
     @Test
     @DisplayName("Annotated By Parameter")
     public void testAnnotatedByParameter() {
@@ -52,5 +54,6 @@ public class LabelsTest extends BaseTests {
     @Target({ ElementType.TYPE, ElementType.METHOD })
     @Retention(RetentionPolicy.RUNTIME)
     public @interface CustomAnnotationSW {
+        String getValue() default "default";
     }
 }

@@ -1,6 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.*;
+import tests.allure.Custom;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
