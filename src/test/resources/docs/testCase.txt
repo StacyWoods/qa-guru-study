@@ -1,11 +1,18 @@
 Заголовок: Проверка поиска в яндексе
-Приоритет: блокер!
+
+Критичность (Severity): Blocker, Critical, Major, Minor, Trivial
+
+_Приоритет: High, Medium, Low
+
 Тестовые данные: [
     [Selenide, is an open source library for test],
     [JUnit, Support JUnit]
 ]
 
-Предусловия:
+_Окружение:
+Тестовый стенд, OC, версии: браузера, сервисов, БД, библиотек
+
+_Предусловия:
 Открыт браузер, со страницей ya.ru
 
 Шаги:
