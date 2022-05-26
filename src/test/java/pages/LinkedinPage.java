@@ -11,7 +11,8 @@ public class LinkedinPage extends AbstractPage {
     public ElementsCollection menuItemList = $$(".top-nav-link__label-text");
 
     public LinkedinPage openPage() {
-        open("https://www.linkedin.com/");
+        setBaseUrl("https://www.linkedin.com");
+        open(getBaseUrl());
         if(acceptButton.isDisplayed()) {
             removeById("artdeco-global-alert-container");
         }

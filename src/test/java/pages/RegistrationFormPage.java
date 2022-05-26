@@ -24,7 +24,8 @@ public class RegistrationFormPage extends AbstractPage {
 
     // actions
     public RegistrationFormPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        setBaseUrl("https://demoqa.com");
+        open(getBaseUrl() + "/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         removeBy("footer");
         removeBy("#dplus-anchor");

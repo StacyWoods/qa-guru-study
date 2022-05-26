@@ -34,7 +34,7 @@ public class AutomationPracticeFormTest extends BaseTests {
 
     @Test
     void checkStudentsRegistrationForm() {
-        Selenide.open("https://demoqa.com/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
 
         fillStudentsRegistrationForm();
 

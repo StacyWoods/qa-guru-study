@@ -3,8 +3,10 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import configs.CredentialsConfigs;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +22,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 
 public class BaseTests {
+    private static final CredentialsConfigs configs = ConfigFactory.create(CredentialsConfigs.class);
 
     public static final String OWNER = "StacyWoods";
     protected static final String REPOSITORY = OWNER + "/qa-guru-study";
@@ -34,9 +37,9 @@ public class BaseTests {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-//        Configuration.browserSize = "1420x780";
+
+        Configuration.browserSize = System.getProperty("browserSize", configs.browserSize());
+        Configuration.remote = getRemoteHub();
 //        Configuration.holdBrowserOpen = true;
 //        Configuration.timeout = 300000;
 
@@ -108,5 +111,15 @@ public class BaseTests {
         userData.put("state", "Rajasthan");
         userData.put("city", "Jaipur");
         userData.put("state_and_city", "Rajasthan Jaipur");
+    }
+
+    protected static String getRemoteHub() {
+        if (System.getProperty("remoteHub") != null) {
+            return System.getProperty("remoteHub");
+        } else if (System.getProperty("remoteHubUser") != null && System.getProperty("remoteHubPass") != null) {
+            return String.format(configs.selenoidParsedUrl(), System.getProperty("remoteHubUser"), System.getProperty("remoteHubPass"));
+        } else {
+            return String.format(configs.selenoidParsedUrl(), configs.selenoidLogin(), configs.selenoidPass());
+        }
     }
 }
