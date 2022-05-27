@@ -1,5 +1,6 @@
 package providers;
 
+import configs.PropertiesWebDriverConfig;
 import configs.WebDriverConfig;
 import enums.Browser;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,6 +14,7 @@ import java.util.function.Supplier;
 public class WebDriverProvider implements Supplier<WebDriver> {
 
     private final WebDriverConfig config;
+//    private PropertiesWebDriverConfig config;
 
     public WebDriverProvider() {
         this.config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
