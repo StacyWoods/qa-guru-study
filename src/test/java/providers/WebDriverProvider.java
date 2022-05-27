@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class WebDriverProvider implements Supplier<WebDriver> {
 
-    private WebDriverConfig config;
+    private final WebDriverConfig config;
 
     public WebDriverProvider() {
         this.config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
@@ -31,6 +31,10 @@ public class WebDriverProvider implements Supplier<WebDriver> {
             return new ChromeDriver();
         }
         if (config.getBrowser().equals(Browser.FIREFOX)) {
+            WebDriverManager.firefoxdriver().setup();
+            return new FirefoxDriver();
+        }
+        if (config.getBrowser().equals(Browser.SAFARI)) {
             WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();
         }
